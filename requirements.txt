@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+openai
+langchain
+python-dotenv
+tiktoken
+pinecone-client[grpc]==2.2.4
+pydantic
+tenacity
+termcolor

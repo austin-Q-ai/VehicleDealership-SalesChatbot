@@ -1,0 +1,45 @@
+Help on function create_stuff_documents_chain in module langchain.chains.combine_documents.stuff:
+
+ccrreeaattee__ssttuuffff__ddooccuummeennttss__cchhaaiinn(llm: langchain_core.runnables.base.Runnable[typing.Union[langchain_core.prompt_values.PromptValue, str, typing.Sequence[typing.Union[langchain_core.messages.base.BaseMessage, typing.Tuple[str, str], str, typing.Dict[str, typing.Any]]]], typing.Union[langchain_core.messages.base.BaseMessage, str]], prompt: langchain_core.prompts.base.BasePromptTemplate, *, output_parser: Optional[langchain_core.output_parsers.base.BaseOutputParser] = None, document_prompt: Optional[langchain_core.prompts.base.BasePromptTemplate] = None, document_separator: str = '\n\n') -> langchain_core.runnables.base.Runnable[typing.Dict[str, typing.Any], typing.Any]
+    Create a chain for passing a list of Documents to a model.
+    
+    Args:
+        llm: Language model.
+        prompt: Prompt template. Must contain input variable "context", which will be
+            used for passing in the formatted documents.
+        output_parser: Output parser. Defaults to StrOutputParser.
+        document_prompt: Prompt used for formatting each document into a string. Input
+            variables can be "page_content" or any metadata keys that are in all
+            documents. "page_content" will automatically retrieve the
+            `Document.page_content`, and all other inputs variables will be
+            automatically retrieved from the `Document.metadata` dictionary. Default to
+            a prompt that only contains `Document.page_content`.
+        document_separator: String separator to use between formatted document strings.
+    
+    Returns:
+        An LCEL Runnable. The input is a dictionary that must have a "context" key that
+        maps to a List[Document], and any other input variables expected in the prompt.
+        The Runnable return type depends on output_parser used.
+    
+    Example:
+        .. code-block:: python
+    
+            # pip install -U langchain langchain-community
+    
+            from langchain_community.chat_models import ChatOpenAI
+            from langchain_core.documents import Document
+            from langchain_core.prompts import ChatPromptTemplate
+            from langchain.chains.combine_documents import create_stuff_documents_chain
+    
+            prompt = ChatPromptTemplate.from_messages(
+                [("system", "What are everyone's favorite colors:\n\n{context}")]
+            )
+            llm = ChatOpenAI(model_name="gpt-3.5-turbo")
+            chain = create_stuff_documents_chain(llm, prompt)
+    
+            docs = [
+                Document(page_content="Jesse loves red but not yellow"),
+                Document(page_content = "Jamal loves green but not as much as he loves orange")
+            ]
+    
+            chain.invoke({"context": docs})
