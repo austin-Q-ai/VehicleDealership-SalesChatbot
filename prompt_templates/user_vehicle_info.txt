@@ -1,0 +1,7 @@
+Registration Number: {vrn}
+Mileage: {vehicle_mileage}
+Make: {make}
+Model: {model}
+Generation: {generation}
+Trading Price(GBP): {price}
+Vehicle Type: {type}

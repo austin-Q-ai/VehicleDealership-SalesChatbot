@@ -1,0 +1,6 @@
+----------
+Vehicle Description : {}
+Website Link : {}
+Video Link : {}
+Forecourt Price : {}
+----------

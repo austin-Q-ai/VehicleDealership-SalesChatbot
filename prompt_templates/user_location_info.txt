@@ -1,0 +1,3 @@
+Postcode of the User: {user_postcode}
+Postcode of the TMC office where the vehicle that user interested is located in: {office_postcode}
+Distance between User and TMC office: {distance}

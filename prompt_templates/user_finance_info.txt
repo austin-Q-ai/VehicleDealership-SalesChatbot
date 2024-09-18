@@ -1,0 +1,5 @@
+Interested Vehicle's VIN: {vin}
+Deposit: {deposit}
+Term: {term}
+RegularPayment: {regular_payment}
+APR: {apr}

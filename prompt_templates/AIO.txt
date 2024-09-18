@@ -1,0 +1,22 @@
+Here is reference data.
+####
+{chat_model}
+------------
+Some data related user's query
+{reference_data}
+------------
+User's contact information
+{contact_info}
+------------
+User's location information
+{location_info}
+------------
+User's finance information
+{finance_info}
+------------
+User's vehicle information
+{vehicle_info}
+------------
+Information of the vehicle that user is looking at
+{focused_vehicle}
+####

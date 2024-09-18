@@ -1,0 +1,80 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "determine_params",
+            "description": "This function used to extract the information from the conversation.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "user_name": {
+                        "type": "string",
+                        "description": "This property stands for user's name. It returns '' when name wasn't provided in the conversation."
+                    },
+                    "user_contact_number": {
+                        "type": "string",
+                        "description": "This property stands for user's phone number. it returns '' when phone number wasn't provided in the conversation. It must only contains numbers and dashes. For example, fuwong94926@gmail.com is not valid number"
+                    },
+                    "user_email_address": {
+                        "type": "string",
+                        "description": "This property stands for user's email address. it returns '' when email address wasn't provided in the conversation."
+                    },
+                    "user_post_code": {
+                        "type": "string",
+                        "description": "This property stands for user's postcode. it returns '' when postcode wasn't provided in the conversation."
+                    },
+                    "user_vehicle_registration_number": {
+                        "type": "string",
+                        "description": "This property stands for registration number of the vehicle that user have. it returns '' when vehicle registration number wasn't provided in the conversation."
+                    },
+                    "user_vehicle_mileage": {
+                        "type": "string",
+                        "description": "This property stands for mileage of the user's vehicle. it returns '' when mileage of the user's vehicle wasn't provided in the conversation."
+                    },
+                    "user_vehicle_condition": {
+                        "type": "string",
+                        "enum": ["Excellent", "Good", "Average", "Below Average", "Poor", ""],
+                        "description": "This property stands for condition of the user's vehicle. it returns '' when condition of the user's vehicle wasn't provided in the conversation."
+                    },
+                    "user_vehicle_service_history": {
+                        "type": "string",
+                        "enum": ["Full History", "Part History", "No History", ""],
+                        "description": "This property stands for service history of the user's vehicle. it returns '' when service history of the user's vehicle wasn't provided in the conversation."
+                    },
+                    "user_vehicle_material_links": {
+                        "type": "array",
+                        "description": "list of links of materials that related to user's vehicle.",
+                        "items": {
+                            "type":"string"
+                        }
+                    },
+                    "user_interested_vehicle_link": {
+                        "type": "string",
+                        "description": "This property stands for website link of the user's interested vehicle. it returns '' when website link of the user's interested vehicle wasn't provided in the conversation."
+                    },
+                    "finance_term": {
+                        "type": "number",
+                        "description": "This property stands for the term of user's finance option when purchase vehicle. It returns 0 when term didn't provided in the previous conversation and returns term of the finance when user provided term of finance option."
+                    },
+                    "finance_deposit": {
+                        "type": "number",
+                        "description": "This property stands for the deposit of user's finance option when purchase vehicle. It returns 0 when term didn't provided in the previous conversation and returns deposit of the finance when user provided term of finance option."
+                    },
+                    "conversation_intent": {
+                        "type": "string",
+                        "enum": ["searching_vehicle", "general_question", "vehicle_valuation", "follow_up", "others", "total_interest_payable", "total_payable"],
+                        "description": "This property stands for current user's intent of the conversation. It returns 'searching_vehicle' when user trying to get vehicle recommendation or searching for vehicles from company. This property only return 'searching_vehicle' only when user is searching for the vehicle in the company's stock or inventory. It returns 'general_question' when user trying to ask general question related to company, such as company's history or recent news of the company, etc. It returns 'vehicle_valuation' when user trying to sell his own vehicle. This includes when user get help to valuate own vehicle or part exchange.It returns 'follow_up' when user is asking about one specific interested vehicle of the company and that vehicle is already mentioned or appeared. It returns 'total_interest_payable' when customer trying to calculate total interest payable. It returns 'total_payable' when customer trying to calculate total amount payable. It also returns 'follow_up' when customer is continuing conversation about the vehicle that showed or mentioned before. It returns 'others' otherwise."
+                    },
+                    "features": {
+                        "type": "array",
+                        "description": "This property stands for all list of features that related to the user's vehicle such as tow bar",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": ["user_name", "user_contact_number", "user_email_address", "user_post_code","user_vehicle_registration_number", "user_vehicle_mileage", "user_vehicle_condition", "user_vehicle_service_history", "user_vehicle_material_links", "user_interested_vehicle_link", "conversation_intent", "features"]
+            }
+        }
+    }
+]

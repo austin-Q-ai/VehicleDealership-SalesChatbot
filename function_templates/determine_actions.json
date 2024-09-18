@@ -1,0 +1,139 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "send_whatsapp",
+            "description": "This function is called when bot need to send content via whatsapp. This function is only called after user provided all details required to use whatsapp message, meaning this function should called after customer provided whatsapp number and all required information related to whatsapp message. Remember, this function can not be called when user didn't provided whatsapp number.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "number": {
+                        "type": "number",
+                        "description": "This property returns customer's contact number. Plz return 0 when contact number was not provided in the previous conversation."
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "This property returns whatsapp message that should be sent to customer. Please include full message including required links."
+                    }
+                },
+                "required": ["number", "message"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "send_sms",
+            "description": "This function is called when bot need to send content via sms. This function is only called after user provided all details required to use sms message, meaning this function should called after customer provided sms number and all required information related to sms message. Remember, this function can not be called when user didn't provided sms number.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "number": {
+                        "type": "number",
+                        "description": "This property returns customer's contact number. Plz return 0 when contact number was not provided in the previous conversation."
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "This property returns sms message that should be sent to customer. Please include full message including required links."
+                    }
+                },
+                "required": ["number", "message"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "send_email",
+            "description": "This function is called when bot need to send content via email. This function is only called after user provided all details required to send email, meaning this function should called after customer provided email address and all required information related to message. Remember, this function can not be called when user didn't provided email address.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "This property returns the email address of the user if it is provided in the previous conversation, otherwise return ''."
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "This property returns title of the email."
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "This property returns message that should be sent to customer. Please include full message including required links. This is no reply mail, so do not include anything like 'Plz reply to this email ...'"
+                    }
+                },
+                "required": ["email", "title", "message"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "proceed_finance_reservation",
+            "description": "This function is called when user provided all contact info and wanna proceed vehicle reservation via finance.  This function is only called after user provided all details required for finance reservation, meaning this function should called after customer provided contact info and all required information for finance purchase reservation. Remember, this function can not be called when user didn't provided contact info",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "description": "This property returns vin number of the vehicle that user wanna purchase."
+                    },
+                    "deposit": {
+                        "type": "number",
+                        "description": "This property returns deposit of the finance."
+                    },
+                    "term": {
+                        "type": "number",
+                        "description": "This property returns term of the finance."
+                    },
+                    "PX": {
+                        "type": "string",
+                        "enum": ["true", "false"],
+                        "description": "This property returns 'true' when user proceed with part exchange and return 'false' when user only purchase vehicle."
+                    }
+
+                },
+                "required": ["vin", "deposit", "term", "PX"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "proceed_direct_purchase_reservation",
+            "description": "This function is called when user provide all contact info and wanna proceed reservation of vehicle via direct payment. This function must be called when customer asks to continue with reservation and do not specify details of finance details. This function is only called after user provided all details required for full pay reservation, meaning this function should called after customer provided contact info and all required information for direct purchase reservation. Remember, this function can not be called when user didn't provided contact info.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "vin": {
+                        "type": "string",
+                        "description": "This property returns vin number of the vehicle that user wanna purchase."
+                    },
+                    "PX": {
+                        "type": "string",
+                        "enum": ["true", "false"],
+                        "description": "This property returns 'true' when user proceed with part exchange and return 'false' when user only purchase vehicle."
+                    }
+                },
+                "required": ["vin", "PX"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "send_message_to_sales_team",
+            "description": "This function is called when user wanna send message to sales team of TMC. This funtion should called when user provided the message that wanna send to sales team.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "This property returns vin number of the vehicle that user wanna purchase."
+                    }
+                },
+                "required": ["message"]
+            }
+        }
+    }
+]
